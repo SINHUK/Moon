@@ -1,0 +1,5 @@
+.idea
+hipy.db
+*.pyc
+__pycache__
+Migrations
