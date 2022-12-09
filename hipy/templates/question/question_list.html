@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<!DOCTYPE html>
+<head>
+  <title>NEXON</title>
+  <link href="b.css" rel="stylesheet">
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{{ url_for('main.index') }}">NEXON</a>
+        <button class="navbar-toggler" type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent"
+                aria-expanded="false"
+                aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+            {% if g.user %}
+            <ul class="navbar-nav">
+                <li class="nav-item ">
+                    <a class="nav-link" href="{{ url_for('auth.logout') }}">{{ g.user.username }} (로그아웃)</a>
+                </li>
+            </ul>
+            {% else %}
+
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('auth.signup') }}">계정생성</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('auth.login') }}">로그인</a>
+                </li>
+            </ul>
+            {% endif %}
+        </div>
+    </div>
+</nav>
+  <center>
+  <br>
+  <br>
+  <img src="https://t1.daumcdn.net/cfile/tistory/992E55475AD4919E07"width="1880" height="370">
+  <h1>카테고리</h1>
+   
+    <h1><a href="{{url_for('question.detail', question_id = 1)}}" target="iframe1" class="color">회사 소개</a>
+    <a href="{{url_for('question.detail', question_id = 2)}}" target="iframe1" class="color3">게임 소개</a>
+    <a href="{{url_for('question.detail', question_id = 3)}}" target="iframe1" class="color6">메이플 브금</a>
+    <a href="{{url_for('question.detail', question_id = 4)}}" target="iframe1" class="color7">퍼스트 디센턴드 영상</a>
+    <a href="{{url_for('question.detail', question_id = 5)}}" target="iframe1" class="color5">메이플 사건사고</a>
+    <a href="{{url_for('question.detail', question_id = 6)}}" target="iframe1" class="color4">라이브러리</a></h1></div></center>  
+    <article>
+      <iframe name="iframe1" src="{{url_for('question.detail', question_id = 1)}}" frameborder="0" width="1500" height="800"></iframe>
+    </article>
+</body>
+</html>
+{% endblock %}
